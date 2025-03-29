@@ -1,13 +1,521 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #8B5CF6;
+  --primary-dark: #6E59A5;
+  --primary-light: #E5DEFF;
+  --secondary-color: #D946EF;
+  --dark-color: #1A1F2C;
+  --light-color: #F8F9FA;
+  --success-color: #10B981;
+  --warning-color: #F97316;
+  --error-color: #EF4444;
+  --gray-color: #8E9196;
+  
+  /* Gradient Variables */
+  --gradient-primary: linear-gradient(135deg, #8B5CF6, #D946EF);
+  --gradient-secondary: linear-gradient(90deg, #D946EF, #FFDEE2);
+  --gradient-success: linear-gradient(135deg, #10B981, #D1FAE5);
+  --gradient-warning: linear-gradient(135deg, #F97316, #FFEDD5);
+  --gradient-background: linear-gradient(109.6deg, rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f5f7fa, #e1e6ed);
+  color: var(--dark-color);
+  min-height: 100vh;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  background-color: rgba(241, 241, 241, 0.8);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+input, select, textarea, button {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: 1.3;
+  font-weight: 700;
+  background-clip: text;
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--gradient-primary);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Enhanced Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid rgba(142, 145, 150, 0.2);
+  border-radius: 8px;
+  background-color: white;
+  color: var(--dark-color);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+button,
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2);
+}
+
+button:hover,
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.3);
+}
+
+button:disabled,
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Container Styles */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Animated elements */
+.animated-element {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animated-element:hover {
+  transform: scale(1.03);
+}
+
+/* Form focus and hover effects */
+input::placeholder,
+textarea::placeholder {
+  color: rgba(142, 145, 150, 0.6);
+  transition: color 0.2s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: rgba(139, 92, 246, 0.4);
+}
+
+/* Highlight form field on hover */
+.form-field:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.08) !important;
+}
+
+/* Form field transition effects */
+.MuiFormControl-root {
+  transition: transform 0.2s ease !important;
+}
+
+.MuiFormControl-root:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Add more effects for custom Material UI styling */
+.MuiButton-root {
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.3px !important;
+}
+
+.MuiTextField-root,
+.MuiFormControl-root {
+  margin-bottom: 20px !important;
+  width: 100% !important;
+}
+
+.MuiOutlinedInput-root {
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color) !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color) !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1) !important;
+}
+
+.MuiButton-contained {
+  background: var(--gradient-primary) !important;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2) !important;
+}
+
+.MuiButton-contained:hover {
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #8B5CF6;
+  --primary-dark: #6E59A5;
+  --primary-light: #E5DEFF;
+  --secondary-color: #D946EF;
+  --dark-color: #1A1F2C;
+  --light-color: #F8F9FA;
+  --success-color: #10B981;
+  --warning-color: #F97316;
+  --error-color: #EF4444;
+  --gray-color: #8E9196;
+  
+  
+  --gradient-primary: linear-gradient(135deg, #8B5CF6, #D946EF);
+  --gradient-secondary: linear-gradient(90deg, #D946EF, #FFDEE2);
+  --gradient-success: linear-gradient(135deg, #10B981, #D1FAE5);
+  --gradient-warning: linear-gradient(135deg, #F97316, #FFEDD5);
+  --gradient-background: linear-gradient(109.6deg, rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f5f7fa, #e1e6ed);
+  color: var(--dark-color);
+  min-height: 100vh;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: rgba(241, 241, 241, 0.8);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+input, select, textarea, button {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: 1.3;
+  font-weight: 700;
+  background-clip: text;
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--gradient-primary);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid rgba(142, 145, 150, 0.2);
+  border-radius: 8px;
+  background-color: white;
+  color: var(--dark-color);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+button,
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2);
+}
+
+button:hover,
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.3);
+}
+
+button:disabled,
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.animated-element {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animated-element:hover {
+  transform: scale(1.03);
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.3px !important;
+}
+
+.MuiTextField-root,
+.MuiFormControl-root {
+  margin-bottom: 20px !important;
+  width: 100% !important;
+}
+
+.MuiOutlinedInput-root {
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color) !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color) !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1) !important;
+}
+
+.MuiButton-contained {
+  background: var(--gradient-primary) !important;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2) !important;
+}
+
+.MuiButton-contained:hover {
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+ */

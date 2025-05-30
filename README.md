@@ -31,3 +31,5 @@ A decentralized identity management system developed for COHERENCE-25 Hackathon.
 ```bash
 git clone https://github.com/ShaileshAgrawal07/COHERENCE-25_Deciphers_Blockchain.git
 cd COHERENCE-25_Deciphers_Blockchain
+
+### 2. Install 

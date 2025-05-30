@@ -31,5 +31,29 @@ A decentralized identity management system developed for COHERENCE-25 Hackathon.
 ```bash
 git clone https://github.com/ShaileshAgrawal07/COHERENCE-25_Deciphers_Blockchain.git
 cd COHERENCE-25_Deciphers_Blockchain
+```
 
-### 2. Install 
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Compile Smart Contracts
+
+```bash
+npx hardhat compile
+```
+
+### 4. Deploy Contracts (Local Network)
+
+```bash
+npx hardhat node
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+### 5.  Start the Frontend
+
+```bash
+npm run dev
+```

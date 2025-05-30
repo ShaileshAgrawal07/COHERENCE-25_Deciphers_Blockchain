@@ -57,3 +57,5 @@ npx hardhat run scripts/deploy.js --network localhost
 ```bash
 npm run dev
 ```
+
+### 6. Open http://localhost:3000 to view the app in your browser.
